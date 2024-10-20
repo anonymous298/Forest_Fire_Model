@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 form-container">
+                <h1 class="text-center">Forest Fire Prediction</h1>
+                <form action="{{ url_for('predict') }}" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="temperature" class="form-label">Temperature</label>
+                            <input type="number" step="0.1" class="form-control" id="temperature" name="temperature" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rh" class="form-label">RH (Relative Humidity)</label>
+                            <input type="number" step="0.1" class="form-control" id="rh" name="rh" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ws" class="form-label">Ws (Wind Speed)</label>
+                            <input type="number" step="0.1" class="form-control" id="ws" name="ws" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rain" class="form-label">Rain</label>
+                            <input type="number" step="0.1" class="form-control" id="rain" name="rain" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ffmc" class="form-label">FFMC</label>
+                            <input type="number" step="0.1" class="form-control" id="ffmc" name="ffmc" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dmc" class="form-label">DMC</label>
+                            <input type="number" step="0.1" class="form-control" id="dmc" name="dmc" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="isi" class="form-label">ISI</label>
+                            <input type="number" step="0.1" class="form-control" id="isi" name="isi" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="region" class="form-label">Region</label>
+                            <select class="form-select" id="region" name="region" required>
+                                <option value="" selected disabled>Select a region</option>
+                                <option value="0">Region 0</option>
+                                <option value="1">Region 1</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {% if prediction is defined %}
+                    <div class="mt-4">
+                        <h2 class="text-center">Prediction Result</h2>
+                        <p class="lead text-center p-3 bg-light rounded">
+                            The predicted forest fire area is <strong class="text-danger">{{ prediction }}</strong> hectares.
+                        </p>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
