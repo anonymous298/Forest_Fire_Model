@@ -4,8 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-application = Flask(__name__)
-app = application
+app = Flask(__name__)
 
 with open('pickle_files/ridgescaler.pkl', 'rb') as scalerfile:
     scaler = pickle.load(scalerfile)
