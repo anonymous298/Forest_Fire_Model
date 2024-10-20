@@ -8,3 +8,15 @@ To run the application, use the following command:
 
 ```bash
 python app.py
+```
+
+### Complete Example in Context
+Here’s how it looks within the context of your README:
+
+```markdown
+
+1. **Clone this Repository**:
+   ```bash
+   git clone https://github.com/your-username/forest-fire-regression.git
+   cd forest-fire-regression
+```
